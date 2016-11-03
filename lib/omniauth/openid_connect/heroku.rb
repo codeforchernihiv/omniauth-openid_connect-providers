@@ -4,6 +4,12 @@ module OmniAuth::OpenIDConnect
       config?('host') || "id.heroku.com"
     end
 
+    def options
+      super.merge({
+        scope: [:identity]
+      })
+    end
+
     def client_options
       opts = {
         :authorization_endpoint => "/oauth/authorize",
