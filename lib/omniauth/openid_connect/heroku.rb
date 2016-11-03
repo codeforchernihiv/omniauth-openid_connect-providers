@@ -1,14 +1,14 @@
 module OmniAuth::OpenIDConnect
   class Heroku < Provider
     def host
-      config?('host') || "connect-op.heroku.com"
+      config?('host') || "id.heroku.com"
     end
 
     def client_options
       opts = {
-        :authorization_endpoint => "/authorizations/new",
-        :token_endpoint => "/access_tokens",
-        :userinfo_endpoint => "/user_info"
+        :authorization_endpoint => "/oauth/authorize",
+        :token_endpoint => "/oauth/token",
+        :userinfo_endpoint => "/account"
       }
 
       opts.merge super
